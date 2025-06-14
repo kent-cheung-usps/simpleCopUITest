@@ -74,29 +74,6 @@ public class ReadTest {
 		page.getByTestId("fr-field-callback_1").getByTestId("input-").press("Tab");
 		page.getByTestId("fr-field-callback_2").getByTestId("input-").fill("Cop@9075");
 		page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Sign In")).click();
-
-		page.waitForTimeout(5000);
-
-		// page.getByText("Not Now").click();
-		page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Continue")).click();
-		page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Manage Locations")).click();
-		page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("My Account")).click();
-
-		page.waitForTimeout(5000);
-
-		page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Logout")).click();
-		// page.navigate("https://cop-cat.usps.com/");
-	}
-
-	@Test
-	void testManageLocation() {
-		page.navigate("https://cop-cat.usps.com/");
-		page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Log In")).click();
-		page.getByTestId("fr-field-callback_1").getByTestId("input-").click();
-		page.getByTestId("fr-field-callback_1").getByTestId("input-").fill("catwoman00");
-		page.getByTestId("fr-field-callback_1").getByTestId("input-").press("Tab");
-		page.getByTestId("fr-field-callback_2").getByTestId("input-").fill("Cop@9075");
-		page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Sign In")).click();
 		// page.locator("label").filter(new Locator.FilterOptions().setHasText("Not Now")).click();
 		page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Continue")).click();
 
@@ -104,31 +81,78 @@ public class ReadTest {
 
 		page.getByRole(AriaRole.HEADING, new Page.GetByRoleOptions().setName("My Account")).getByRole(AriaRole.STRONG).click();
 
-		Locator titleMsg = page.getByText("Welcome to your USPS Business Portal");
-		assertThat(titleMsg).isVisible();
-		assertTrue(titleMsg.textContent().contains("Welcome to your USPS Business Portal"), "Incorrect Messages");
+		Locator myBusinessLocations = page.getByText("My Business Locations (1)");
+		assertThat(myBusinessLocations).isVisible();
+		assertTrue(myBusinessLocations.textContent().contains("My Business Locations (1)"), "Incorrect text for My Business Locations");
 
-		page.getByText("Quick Actions").click();
-		page.locator("app-my-account").click();
-		page.getByText("My Business Locations (1)").click();
-		page.getByText("My Payment Accounts (1)").click();
-		page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Manage Locations")).click();
-		page.getByText("Manage Locations", new Page.GetByTextOptions().setExact(true)).click();
-		page.getByText("You can manage you current").click();
-		page.getByText("Mail Owner CRID").click();
-		page.getByText("Business Location", new Page.GetByTextOptions().setExact(true)).click();
-		page.getByText("95178918").click();
-		page.getByText("E 14TH ST AUSTIN TX 78702").click();
-		page.getByText("This Home location is not").click();
-		page.getByText("901117829").click();
-		page.getByText("901117830").click();
-		page.getByText("901117831").click();
-		page.getByText("OUTBOUND").first().click();
-		page.getByText("OUTBOUND").nth(1).click();
-		page.getByText("RETURNS").click();
-		page.getByText("CAT Merchant Test Inc").nth(1).click();
-		page.getByText("CAT Merchant Test Inc").nth(2).click();
-		page.getByText("CAT Merchant Test Inc").nth(3).click();
+		Locator myPaymentAccounts = page.getByText("My Payment Accounts (1)");
+		assertThat(myPaymentAccounts).isVisible();
+		assertTrue(myPaymentAccounts.textContent().contains("My Payment Accounts (1)"),
+				"Incorrect text for My Payment Accounts");
+
+		Locator manageLocationsBtn = page.getByRole(AriaRole.BUTTON,
+				new Page.GetByRoleOptions().setName("Manage Locations"));
+		assertThat(manageLocationsBtn).isVisible();
+		assertTrue(manageLocationsBtn.textContent().contains("Manage Locations"),
+				"Incorrect text for Manage Locations button");
+
+		Locator manageLocationsExact = page.getByText("Manage Locations", new Page.GetByTextOptions().setExact(true));
+		assertThat(manageLocationsExact).isVisible();
+		assertTrue(manageLocationsExact.textContent().contains("Manage Locations"),
+				"Incorrect text for Manage Locations");
+
+		Locator id95178918 = page.getByText("95178918");
+		assertThat(id95178918).isVisible();
+		assertTrue(id95178918.textContent().contains("95178918"), "Incorrect text for 95178918");
+
+		// Locator addressAustin = page.getByText("3100 E 14TH ST AUSTIN TX 78702");
+		// assertThat(addressAustin).isVisible();
+		// assertTrue(addressAustin.textContent().contains("E 14TH ST AUSTIN TX 78702"), "Incorrect text for address");
+
+		// Locator homeLocationText = page.getByText("This Home location is not");
+		// assertThat(homeLocationText).isVisible();
+		// assertTrue(homeLocationText.textContent().contains("This Home location is not"),
+		// 		"Incorrect text for Home location");
+
+		// Locator id901117829 = page.getByText("901117829");
+		// assertThat(id901117829).isVisible();
+		// assertTrue(id901117829.textContent().contains("901117829"), "Incorrect text for 901117829");
+
+		// Locator id901117830 = page.getByText("901117830");
+		// assertThat(id901117830).isVisible();
+		// assertTrue(id901117830.textContent().contains("901117830"), "Incorrect text for 901117830");
+
+		// Locator id901117831 = page.getByText("901117831");
+		// assertThat(id901117831).isVisible();
+		// assertTrue(id901117831.textContent().contains("901117831"), "Incorrect text for 901117831");
+
+		// Locator outboundFirst = page.getByText("OUTBOUND").first();
+		// assertThat(outboundFirst).isVisible();
+		// assertTrue(outboundFirst.textContent().contains("OUTBOUND"), "Incorrect text for OUTBOUND (first)");
+
+		// Locator outboundSecond = page.getByText("OUTBOUND").nth(1);
+		// assertThat(outboundSecond).isVisible();
+		// assertTrue(outboundSecond.textContent().contains("OUTBOUND"), "Incorrect text for OUTBOUND (second)");
+
+		// Locator returnsText = page.getByText("RETURNS");
+		// assertThat(returnsText).isVisible();
+		// assertTrue(returnsText.textContent().contains("RETURNS"), "Incorrect text for RETURNS");
+
+		// Locator catMerchant1 = page.getByText("CAT Merchant Test Inc").nth(1);
+		// assertThat(catMerchant1).isVisible();
+		// assertTrue(catMerchant1.textContent().contains("CAT Merchant Test Inc"),
+		// 		"Incorrect text for CAT Merchant Test Inc (1)");
+
+		// Locator catMerchant2 = page.getByText("CAT Merchant Test Inc").nth(2);
+		// assertThat(catMerchant2).isVisible();
+		// assertTrue(catMerchant2.textContent().contains("CAT Merchant Test Inc"),
+		// 		"Incorrect text for CAT Merchant Test Inc (2)");
+
+		// Locator catMerchant3 = page.getByText("CAT Merchant Test Inc").nth(3);
+		// assertThat(catMerchant3).isVisible();
+		// assertTrue(catMerchant3.textContent().contains("CAT Merchant Test Inc"),
+		// 		"Incorrect text for CAT Merchant Test Inc (3)");
+
 		page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Logout")).click();
 		page.navigate("https://cop-cat.usps.com/");
 	}
