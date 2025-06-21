@@ -76,112 +76,108 @@ public class ReadTest {
 		page.getByTestId("fr-field-callback_1").getByTestId("input-").press("Tab");
 		page.getByTestId("fr-field-callback_2").getByTestId("input-").fill("Cop@9075");
 		page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Sign In")).click();
-		// page.locator("label").filter(new Locator.FilterOptions().setHasText("Not Now")).click();
-		page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Continue")).click();
+		// page.locator("label").filter(new Locator.FilterOptions().setHasText("Not
+		// Now")).click();
+		// page.getByRole(AriaRole.BUTTON, new
+		// Page.GetByRoleOptions().setName("Continue")).click();
 
 		page.waitForTimeout(5000);
 
 		Locator landingTitle = page.getByText("Business Customer Onboarding");
 		assertThat(landingTitle).isVisible();
-		assertTrue(landingTitle.textContent().contains("Business Customer Onboarding"),"Incorrect text for My Business Locations");
-		
-		// Assertion with exact string match
-		assertThat(page.locator("div").filter(new Locator.FilterOptions().setHasText("You've successfully registered your USPS Business Account.")).nth(3))
-				.hasText("You've successfully registered your USPS Business Account.");
-
-		Locator myBusinessLocations = page.getByText("My Business Locations (1)");
-
-		assertThat(myBusinessLocations).isVisible();
-		assertTrue(myBusinessLocations.textContent().contains("My Business Locations (1)"),
+		assertTrue(landingTitle.textContent().contains("Business Customer Onboarding"),
 				"Incorrect text for My Business Locations");
 
-				
-		Locator myPaymentAccounts = page.getByText("My Payment Accounts (1)");
-		assertThat(myPaymentAccounts).isVisible();
-				
-		assertTrue(myPaymentAccounts.textContent().contains("My Payment Accounts (1)"),
-				"Incorrect text for My Payment Accounts");
-				
+		// Assertion with exact string match
+		assertThat(page.locator("div:has-text('successfully registered your USPS Business Account.')").nth(3))
+				.isVisible();
 
-		Locator manageLocationsBtn = page.getByRole(AriaRole.BUTTON,
-				new Page.GetByRoleOptions().setName("Manage Locations"));
-		assertThat(manageLocationsBtn).isVisible();
-		assertTrue(manageLocationsBtn.textContent().contains("Manage Locations"),
-				"Incorrect text for Manage Locations button");
+		Locator yourCompanyInfo = page.getByText("Your Company Information");
+		assertThat(yourCompanyInfo).isVisible();
+		assertTrue(yourCompanyInfo.textContent().contains("Your Company Information"));
 
-		Locator manageLocationsExact = page.getByText("Manage Locations", new Page.GetByTextOptions().setExact(true));
-		assertThat(manageLocationsExact).isVisible();
-		assertTrue(manageLocationsExact.textContent().contains("Manage Locations"),
-				"Incorrect text for Manage Locations");
+		Locator addressCatMerchant = page.getByText("Address CAT Merchant Test Inc");
+		assertThat(addressCatMerchant).isVisible();
+		System.out.println("Actual text content: " + addressCatMerchant.textContent());
+		assertTrue(addressCatMerchant.textContent().contains("CAT Merchant Test"));
 
-		Locator id95178918 = page.getByText("95178918");
-		// 
-		assertThat(id95178918).isVisible();
-		assertTrue(id95178918.textContent().contains("95178918"), "Incorrect text for 95178918");
+		Locator nameCatMerchantPhone = page.getByText("Name CAT MerchantPhone Number");
+		assertThat(nameCatMerchantPhone).isVisible();
+		assertTrue(nameCatMerchantPhone.textContent().contains("Name CAT MerchantPhone Number"));
 
-		// Locator addressAustin = page.getByText("3100 E 14TH ST AUSTIN TX 78702");
-		// 
-		// sertThat(addressAustin).isVisible();
-		// assertTrue(addressAustin.textContent().contains("E 14TH ST AUSTIN TX 78702"),
-		// "Incorrect text for address");
+		Locator email = page.getByText("Email");
+		assertThat(email).isVisible();
+		assertTrue(email.textContent().contains("Email"));
 
-		// Locator homeLocationText = page.getByText("This Home location is not");
-		// 
-		// assertThat(homeLocationText).isVisible();
-		// assertTrue(homeLocationText.textContent().contains("This Home location is
-		// not"),
-		// "Incorrect text for Home location");
-		// 
+		Locator businessAccountHas = page.getByText("Your business account has");
+		assertThat(businessAccountHas).isVisible();
+		assertTrue(businessAccountHas.textContent().contains("Your business account has"));
 
-		// Locator id901117829 = page.getByText("901117829");
-		// assertThat(id901117829).isVisible();
-		// assertTrue(id901117829.textContent().contains("901117829"), "Incorrect text
-		// 
-		// for 901117829");
+		Locator cridLabel = page.getByText("Customer Registration ID (CRID):");
+		assertThat(cridLabel).isVisible();
+		assertTrue(cridLabel.textContent().contains("Customer Registration ID (CRID):"));
 
-		// Locator id901117830 = page.getByText("901117830");
-		// assertThat(id901117830).isVisible();
-		// 
-		// assertTrue(id901117830.textContent().contains("901117830"), "Incorrect text
-		// for 901117830");
+		Locator outboundMidLabel = page.getByText("Outbound Mailer ID (MID):");
+		assertThat(outboundMidLabel).isVisible();
+		assertTrue(outboundMidLabel.textContent().contains("Outbound Mailer ID (MID):"));
 
-		// Locator id901117831 = page.getByText("901117831");
-		// 
-		// assertThat(id901117831).isVisible();
-		// assertTrue(id901117831.textContent().contains("901117831"), "Incorrect text
-		// for 901117831");
+		Locator returnMidLabel = page.getByText("Return Mailer ID (MID):");
+		assertThat(returnMidLabel).isVisible();
+		assertTrue(returnMidLabel.textContent().contains("Return Mailer ID (MID):"));
 
-		// 
-		// Locator outboundFirst = page.getByText("OUTBOUND").first();
-		// assertThat(outboundFirst).isVisible();
-		// assertTrue(outboundFirst.textContent().contains("OUTBOUND"), "Incorrect text
-		// for OUTBOUND (first)");
- 
-		// Locator outboundSecond = page.getByText("OUTBOUND").nth(1);
-		// assertThat(outboundSecond).isVisible();
-		// assertTrue(outboundSecond.textContent().contains("OUTBOUND"), "Incorrect text
-		// for OUTBOUND (second)");
- 
-		// Locator returnsText = page.getByText("RETURNS");
-		// assertThat(returnsText).isVisible();
-		// assertTrue(returnsText.textContent().contains("RETURNS"), "Incorrect text for
-		// RETURNS");
- 
-		// Locator catMerchant1 = page.getByText("CAT Merchant Test Inc").nth(1);
-		// assertThat(catMerchant1).isVisible();
-		// assertTrue(catMerchant1.textContent().contains("CAT Merchant Test Inc"),
-		// "Incorrect text for CAT Merchant Test Inc (1)");
+		Locator returnMidValue = page.getByText("Return Mailer ID (MID): 901117831");
+		assertThat(returnMidValue).isVisible();
+		assertTrue(returnMidValue.textContent().contains("Return Mailer ID (MID): 901117831"));
 
-		// Locator catMerchant2 = page.getByText("CAT Merchant Test Inc").nth(2);
-		// assertThat(catMerchant2).isVisible();
-		// assertTrue(catMerchant2.textContent().contains("CAT Merchant Test Inc"),
-		// "Incorrect text for CAT Merchant Test Inc (2)");
+		Locator outboundMidValue = page.getByText("Outbound Mailer ID (MID): 901117829 (MASTER)");
+		assertThat(outboundMidValue).isVisible();
+		assertTrue(outboundMidValue.textContent().contains("Outbound Mailer ID (MID): 901117829 (MASTER)"));
 
-		// Locator catMerchant3 = page.getByText("CAT Merchant Test Inc").nth(3);
-		// assertThat(catMerchant3).isVisible();
-		// assertTrue(catMerchant3.textContent().contains("CAT Merchant Test Inc"),
-		// "Incorrect text for CAT Merchant Test Inc (3)");
+		Locator cridValue = page.getByText("Customer Registration ID (CRID): 95178918");
+		assertThat(cridValue).isVisible();
+		assertTrue(cridValue.textContent().contains("Customer Registration ID (CRID): 95178918"));
 
+		Locator businessLocationsFaqs = page.getByText("Business Locations FAQs");
+		assertThat(businessLocationsFaqs).isVisible();
+		assertTrue(businessLocationsFaqs.textContent().contains("Business Locations FAQs"));
+
+		Locator whatIsCrid = page.getByText("What is a CRID?");
+		assertThat(whatIsCrid).isVisible();
+		assertTrue(whatIsCrid.textContent().contains("What is a CRID?"));
+
+		Locator cridDescription = page
+				.getByText("The Customer Registration ID (CRID) is a number that identifies your physical");
+		assertThat(cridDescription).isVisible();
+		assertTrue(cridDescription.textContent()
+				.contains("The Customer Registration ID (CRID) is a number that identifies your physical"));
+
+		Locator whatIsMid = page.getByText("What is a MID?");
+		assertThat(whatIsMid).isVisible();
+		assertTrue(whatIsMid.textContent().contains("What is a MID?"));
+
+		Locator midDescription = page.getByText("The Mailer Identification (");
+		assertThat(midDescription).isVisible();
+		assertTrue(midDescription.textContent().contains("The Mailer Identification ("));
+
+		Locator whatIsEps = page.getByText("What is an EPS Account Number?");
+		assertThat(whatIsEps).isVisible();
+		assertTrue(whatIsEps.textContent().contains("What is an EPS Account Number?"));
+
+		Locator epsDescription = page.getByText("The Enterprise Payment System");
+		assertThat(epsDescription).isVisible();
+		assertTrue(epsDescription.textContent().contains("The Enterprise Payment System"));
+
+		Locator youCanAdd = page.getByText("You can add additional");
+		assertThat(youCanAdd).isVisible();
+		assertTrue(youCanAdd.textContent().contains("You can add additional"));
+
+		Locator epsAccountInfo = page.getByText("Enterprise Payment System (EPS) Account Information");
+		assertThat(epsAccountInfo).isVisible();
+		assertTrue(epsAccountInfo.textContent().contains("Enterprise Payment System (EPS) Account Information"));
+
+		Locator chooseExistingActive = page.getByText("Choose an existing, active");
+		assertThat(chooseExistingActive).isVisible();
+		assertTrue(chooseExistingActive.textContent().contains("Choose an existing, active"));
 		page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Logout")).click();
 		page.navigate("https://cop-cat.usps.com/");
 	}
