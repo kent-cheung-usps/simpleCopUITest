@@ -2,7 +2,7 @@
 My Quick Regression Smoke Test
 
 
-### Install playwright document
+### Playwright Installation Document
 ```
 https://playwright.dev/docs/intro#installing-playwright
 ```
