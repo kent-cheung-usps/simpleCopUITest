@@ -2,7 +2,7 @@
 My Quick Regression Smoke Test
 
 
-### Install playwright document
+### Playwright Installation Document
 ```
 https://playwright.dev/docs/intro#installing-playwright
 ```
@@ -12,5 +12,5 @@ mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="in
 ```
 ### Compile and Execute Recording
 ```
-mvn compile exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="codegen cop-cat.usps.com"
+mvn compile exec:java -e -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="codegen --browser-context incognito cop-cat.usps.com"
 ```
