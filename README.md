@@ -1,7 +1,6 @@
 # simpleCopUITest
 My Quick Regression Smoke Test
 
-
 ### Playwright Installation Document
 ```
 https://playwright.dev/docs/intro#installing-playwright
@@ -13,4 +12,12 @@ mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="in
 ### Compile and Execute Recording
 ```
 mvn compile exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="codegen cop-cat.usps.com"
+```
+### Clone the sample
+```
+git clone https://github.com/kent-cheung-usps/simpleCopUITest.git
+```
+### Run test
+```
+mvn clean install
 ```
