@@ -2,7 +2,6 @@ package com.gundam.app;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.microsoft.playwright.*;
-// import com.microsoft.playwright.assertions.PlaywrightAssertions;
 import com.microsoft.playwright.junit.UsePlaywright;
 import com.microsoft.playwright.options.*;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
@@ -83,7 +82,6 @@ public class ReadTest {
 		logger.info("Check - Address & Company Name");
 		Locator addressCatMerchant = page.getByText("Address CAT Merchant Test Inc");
 		assertThat(addressCatMerchant).isVisible();
-		System.out.println("Actual text content: " + addressCatMerchant.textContent());
 		assertTrue(addressCatMerchant.textContent().contains("CAT Merchant Test"), "Incorrect CAT Merchant Test");
 
 		logger.info("Check - Name and Phone Number");
