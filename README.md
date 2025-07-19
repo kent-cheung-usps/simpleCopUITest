@@ -22,5 +22,13 @@ mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="in
 ```
 ### Compile and Execute Recording
 ```
-mvn compile exec:java -e -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="codegen cop-cat.usps.com"
+mvn compile exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="codegen cop-cat.usps.com"
+```
+### Clone the sample
+```
+git clone https://github.com/kent-cheung-usps/simpleCopUITest.git
+```
+### Run test
+```
+mvn clean install
 ```
