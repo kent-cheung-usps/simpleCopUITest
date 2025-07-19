@@ -1,6 +1,17 @@
 # simpleCopUITest
 My Quick Regression Smoke Test
 
+### Jump Start
+```
+git clone https://github.com/kent-cheung-usps/simpleCopUITest.git
+```
+```
+git checkout demo
+```
+```
+mvn clean install
+```
+---
 ### Playwright Installation Document
 ```
 https://playwright.dev/docs/intro#installing-playwright
